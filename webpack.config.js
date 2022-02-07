@@ -67,9 +67,9 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			'./src/': path.resolve(
+			'./src': path.resolve(
 				__dirname,
-				'src/'
+				'src'
 			)
 		}
 	},
