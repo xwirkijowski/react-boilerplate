@@ -67,23 +67,23 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			'./src': path.resolve(
+			'/src': path.resolve(
 				__dirname,
 				'src'
 			),
-			'./assets': path.resolve(
+			'/assets': path.resolve(
 				__dirname,
 				'src/assets'
 			),
-			'./scss': path.resolve(
+			'/scss': path.resolve(
 				__dirname,
 				'src/assets/scss'
 			),
-			'./images': path.resolve(
+			'/images': path.resolve(
 				__dirname,
 				'src/assets/images'
 			),
-			'./components': path.resolve(
+			'/components': path.resolve(
 				__dirname,
 				'src/components'
 			)
