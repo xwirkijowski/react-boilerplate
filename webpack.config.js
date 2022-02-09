@@ -74,26 +74,15 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			'/src': path.resolve(
-				__dirname,
-				'src'
-			),
-			'/assets': path.resolve(
-				__dirname,
-				'src/assets'
-			),
-			'/scss': path.resolve(
-				__dirname,
-				'src/assets/scss'
-			),
-			'/images': path.resolve(
-				__dirname,
-				'src/assets/images'
-			),
-			'/components': path.resolve(
-				__dirname,
-				'src/components'
-			)
+			'/src': path.resolve(__dirname, 'src'),
+			'/assets': path.resolve(__dirname, 'src/assets'),
+			'/scss': path.resolve(__dirname, 'src/assets/scss'),
+			'/fonts': path.resolve(__dirname, 'src/assets/fonts'),
+			'/images': path.resolve(__dirname, 'src/assets/images'),
+			'/components': path.resolve(__dirname, 'src/components'),
+			'/pages': path.resolve(__dirname, 'src/pages'),
+			'/utils': path.resolve(__dirname, 'src/utils'),
+			'/helpers': path.resolve(__dirname, 'src/helpers')
 		}
 	},
 	plugins: [
