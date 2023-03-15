@@ -7,13 +7,15 @@ module.exports = {
 	entry: './src/main.js',
 	output: {
 		filename: '[name].bundle.js',
-		path: path.resolve(__dirname, 'dist'),
-		publicPath: '/'
+		path: path.resolve(__dirname, 'dist/assets'),
+		publicPath: 'assets',
+		clean: true
 	},
 	devServer: {
 		static: {
 			directory: path.join(__dirname, 'public')
 		},
+		publicPath: 'assets',
 		historyApiFallback: true,
 		compress: true,
 		port: 9000
@@ -39,7 +41,7 @@ module.exports = {
 						options: {
 							sourceMap: false,
 							modules: {
-								localIdentName: 'w10-[hash:base64:6]'
+								localIdentName: 'wx-[hash:base64:6]'
 							}
 						}
 					},
@@ -52,6 +54,34 @@ module.exports = {
 					},
 					{
 						loader: 'sass-loader',
+						options: {
+							sourceMap: true
+						}
+					}
+				]
+			},
+			{
+				test: /\.less$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader',
+						options: {
+							sourceMap: false,
+							modules: {
+								localIdentName: 'wx-[hash:base64:6]'
+							}
+						}
+					},
+					{
+						loader: 'resolve-url-loader',
+						options: {
+							sourceMap: false,
+							debug: true
+						}
+					},
+					{
+						loader: 'less-loader',
 						options: {
 							sourceMap: true
 						}
@@ -77,6 +107,7 @@ module.exports = {
 			'/src': path.resolve(__dirname, 'src'),
 			'/assets': path.resolve(__dirname, 'src/assets'),
 			'/scss': path.resolve(__dirname, 'src/assets/scss'),
+			'/less': path.resolve(__dirname, 'src/assets/less'),
 			'/fonts': path.resolve(__dirname, 'src/assets/fonts'),
 			'/images': path.resolve(__dirname, 'src/assets/images'),
 			'/components': path.resolve(__dirname, 'src/components'),
@@ -87,7 +118,8 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, 'public/index.html'),
+			filename: path.resolve(__dirname, 'dist/index.html'),
+			template: 'src/index.html',
 			inject: 'head',
 			scriptLoading: 'defer'
 		}),
