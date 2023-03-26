@@ -11,6 +11,7 @@ Asset loading supports:
 - Fonts `.(woff|woff2|eot|ttf|otf)`
 - Images `.(png|jpg|jpeg|gif)`
 - SVGs `.svg`
+- JSON `.json`
 
 Provided HTML template which will be used for asset population.
 
