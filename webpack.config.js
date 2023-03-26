@@ -3,19 +3,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-	mode: 'development',
 	entry: './src/main.js',
 	output: {
-		filename: '[name].bundle.js',
-		path: path.resolve(__dirname, 'dist/assets'),
-		publicPath: 'assets',
+		filename: '[hash].[name].bundle.js',
+		path: path.resolve(__dirname, 'dist/assets/'),
+		publicPath: 'assets/',
 		clean: true
 	},
 	devServer: {
 		static: {
-			directory: path.join(__dirname, 'public')
+			publicPath: '/',
+			directory: path.join(__dirname, 'dist')
 		},
-		publicPath: 'assets',
 		historyApiFallback: true,
 		compress: true,
 		port: 9000
@@ -99,21 +98,31 @@ module.exports = {
 			{
 				test: /\.svg$/,
 				use: ['@svgr/webpack']
+			},
+			{
+				test: /\.json$/,
+				type: 'json',
+				generator: {
+					filename: '[name][ext][query]',
+					outputPath: '../data',
+					publicPath: 'data/'
+				}
 			}
 		]
 	},
 	resolve: {
 		alias: {
-			'/src': path.resolve(__dirname, 'src'),
-			'/assets': path.resolve(__dirname, 'src/assets'),
-			'/scss': path.resolve(__dirname, 'src/assets/scss'),
-			'/less': path.resolve(__dirname, 'src/assets/less'),
-			'/fonts': path.resolve(__dirname, 'src/assets/fonts'),
-			'/images': path.resolve(__dirname, 'src/assets/images'),
-			'/components': path.resolve(__dirname, 'src/components'),
-			'/pages': path.resolve(__dirname, 'src/pages'),
-			'/utils': path.resolve(__dirname, 'src/utils'),
-			'/helpers': path.resolve(__dirname, 'src/helpers')
+			'src': path.resolve(__dirname, 'src'),
+			'assets': path.resolve(__dirname, 'src/assets'),
+			'scss': path.resolve(__dirname, 'src/assets/scss'),
+			'less': path.resolve(__dirname, 'src/assets/less'),
+			'fonts': path.resolve(__dirname, 'src/assets/fonts'),
+			'images': path.resolve(__dirname, 'src/assets/images'),
+			'components': path.resolve(__dirname, 'src/components'),
+			'pages': path.resolve(__dirname, 'src/pages'),
+			'utils': path.resolve(__dirname, 'src/utils'),
+			'helpers': path.resolve(__dirname, 'src/helpers'),
+			'data': path.resolve(__dirname, 'src/data')
 		}
 	},
 	plugins: [
