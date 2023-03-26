@@ -7,9 +7,10 @@
   "author": "Sebastian Wirkijowski <sebastian@wirkijowski.dev> (https://wirkijowski.dev/)",
   "main": "main.js",
   "scripts": {
-    "build": "webpack --progress --mode=production",
-    "watch": "webpack --progress --watch --env development",
-    "serve": "webpack serve --progress --env development"
+    "build-prod": "webpack --progress --env=production --mode=production",
+    "build-dev": "webpack --progress --env=development --mode=development",
+    "watch": "webpack --progress --watch --env=development --mode=development",
+    "serve": "webpack serve --progress --env=development --mode=development"
   },
   "private": true,
   "homepage": "https://github.com/xwirkijowski/react-boilerplate#readme",
